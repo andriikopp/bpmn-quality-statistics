@@ -82,3 +82,30 @@ boxplot <- boxplot(QY ~ QX, data = boxplot_q, xlab = "Aggregate", ylab = "PMQ",
 dev.off()
 
 # Linguistic quality measures
+png(file = "Linguistic_Quality.png")
+
+colors <- c("green", "yellow", "orange", "red", "brown")
+groups <- c("Discr. Opt.", "Cont. Opt.", "Discr. Pessim.", "Cont. Pessim.")
+levels <- c("Good", "Well", "Satisfied", "Poor", "Bad")
+
+values <- matrix(c(nrow(data[data$d.wsml == "Good",]), nrow(data[data$c.wsml == "Good",]), 
+                   nrow(data[data$d.minl == "Good",]), nrow(data[data$c.minl == "Good",]),
+                   
+                   nrow(data[data$d.wsml == "Well",]), nrow(data[data$c.wsml == "Well",]), 
+                   nrow(data[data$d.minl == "Well",]), nrow(data[data$c.minl == "Well",]),
+                   
+                   nrow(data[data$d.wsml == "Satisfied",]), nrow(data[data$c.wsml == "Satisfied",]), 
+                   nrow(data[data$d.minl == "Satisfied",]), nrow(data[data$c.minl == "Satisfied",]),
+                   
+                   nrow(data[data$d.wsml == "Poor",]), nrow(data[data$c.wsml == "Poor",]), 
+                   nrow(data[data$d.minl == "Poor",]), nrow(data[data$c.minl == "Poor",]),
+                   
+                   nrow(data[data$d.wsml == "Bad",]), nrow(data[data$c.wsml == "Bad",]), 
+                   nrow(data[data$d.minl == "Bad",]), nrow(data[data$c.minl == "Bad",])), 
+                 
+                 nrow = 5, ncol = 4, byrow = TRUE)
+
+barplot_ql <- barplot(values, main = "Linguistic Quality Measures", 
+                      names.arg = groups, xlab = "x", ylab = "y", col = colors)
+
+dev.off()
