@@ -106,6 +106,6 @@ values <- matrix(c(nrow(data[data$d.wsml == "Good",]), nrow(data[data$c.wsml == 
                  nrow = 5, ncol = 4, byrow = TRUE)
 
 barplot_ql <- barplot(values, main = "Linguistic Quality Measures", 
-                      names.arg = groups, xlab = "x", ylab = "y", col = colors)
+                      names.arg = groups, xlab = "Aggregate", ylab = "Models", col = colors)
 
 dev.off()
