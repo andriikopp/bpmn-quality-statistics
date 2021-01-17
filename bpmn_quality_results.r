@@ -20,12 +20,10 @@ failed_R5 <- nrow(data[data$d.R5 == 0,])
 bar_y <- c(failed_R1, failed_R2, failed_R3, failed_R4, failed_R5)
 bar_x <- c("R1", "R2", "R3", "R4", "R5")
 
-png(file = "Discrete_Rules_Conformance.png")
 barplot <- barplot(bar_y, names.arg = bar_x, xlab = "Rule", ylab = "Models", 
         main="Discrete Criteria")
 text(x = barplot, y = bar_y, label = bar_y, pos = 1, cex = 0.8)
 text(x = barplot, y = bar_y, label = bar_y, pos = 3, cex = 0.8)
-dev.off()
 
 # Rules conformance (continuous)
 boxplot_r1 <- data.frame(data["c.R1"])
@@ -51,10 +49,8 @@ colnames(boxplot_r5)[1] <- "RY"
 
 boxplot_r <- rbind(boxplot_r1, boxplot_r2, boxplot_r3, boxplot_r4, boxplot_r5)
 
-png(file = "Continuous_Rules_Conformance.png")
 boxplot <- boxplot(RY ~ RX, data = boxplot_r, xlab = "Rule", ylab = "Conformance", 
         main = "Continuous Criteria")
-dev.off()
 
 # Quality measures
 boxplot_dwsm <- data.frame(data["d.wsm"])
@@ -76,13 +72,10 @@ colnames(boxplot_cmin)[1] <- "QY"
 
 boxplot_q <- rbind(boxplot_dwsm, boxplot_cwsm, boxplot_dmin, boxplot_cmin)
 
-png(file = "Quality_Measures.png")
 boxplot <- boxplot(QY ~ QX, data = boxplot_q, xlab = "Aggregate", ylab = "PMQ", 
                    main = "Quality Measures")
-dev.off()
 
 # Linguistic quality measures
-png(file = "Linguistic_Quality.png")
 
 colors <- c("green", "yellow", "orange", "red", "brown")
 groups <- c("Discr. Opt.", "Cont. Opt.", "Discr. Pessim.", "Cont. Pessim.")
@@ -106,6 +99,7 @@ values <- matrix(c(nrow(data[data$d.wsml == "Good",]), nrow(data[data$c.wsml == 
                  nrow = 5, ncol = 4, byrow = TRUE)
 
 barplot_ql <- barplot(values, main = "Linguistic Quality Measures", 
-                      names.arg = groups, xlab = "Aggregate", ylab = "Models", col = colors)
-
-dev.off()
+                      names.arg = groups, xlab = "Aggregate", ylab = "Models", col = colors,
+                      beside = T, width=c(0.5))
+text(x = barplot_ql, y = values, label = values, pos = 3, cex = 0.8)
+legend("topright", legend = groups, fill = colors)
