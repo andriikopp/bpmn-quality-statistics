@@ -102,4 +102,4 @@ barplot_ql <- barplot(values, main = "Linguistic Quality Measures",
                       names.arg = groups, xlab = "Aggregate", ylab = "Models", col = colors,
                       beside = T, width=c(0.5))
 text(x = barplot_ql, y = values, label = values, pos = 3, cex = 0.8)
-legend("topright", legend = groups, fill = colors)
+legend("topright", legend = levels, fill = colors)
