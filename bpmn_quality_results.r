@@ -54,10 +54,10 @@ boxplot <- boxplot(RY ~ RX, data = boxplot_r, xlab = "Rule", ylab = "Conformance
 
 # Quality measures
 boxplot_dwsm <- data.frame(data["d.wsm"])
-boxplot_dwsm["QX"] <- "Discr. Opt."
+boxplot_dwsm["QX"] <- "Discr. WSM"
 
 boxplot_cwsm <- data.frame(data["c.wsm"])
-boxplot_cwsm["QX"] <- "Cont. Opt."
+boxplot_cwsm["QX"] <- "Cont. WSM"
 
 boxplot_dmin <- data.frame(data["d.min"])
 boxplot_dmin["QX"] <- "Discr. Pessim."
@@ -78,7 +78,7 @@ boxplot <- boxplot(QY ~ QX, data = boxplot_q, xlab = "Aggregate", ylab = "PMQ",
 # Linguistic quality measures
 
 colors <- c("green", "yellow", "orange", "red", "brown")
-groups <- c("Discr. Opt.", "Cont. Opt.", "Discr. Pessim.", "Cont. Pessim.")
+groups <- c("Discr. WSM", "Cont. WSM", "Discr. Pessim.", "Cont. Pessim.")
 levels <- c("Good", "Well", "Satisfied", "Poor", "Bad")
 
 values <- matrix(c(nrow(data[data$d.wsml == "Good",]), nrow(data[data$c.wsml == "Good",]), 
